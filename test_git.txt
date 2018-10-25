@@ -1,4 +1,8 @@
 testtesttest
 whoami? I'm your daddy!
+<<<<<<< HEAD
 ttt
 sss
+=======
+HAHAHAHAHAHA
+>>>>>>> master
