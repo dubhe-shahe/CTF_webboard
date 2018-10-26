@@ -2,10 +2,9 @@
 # -*- coding: utf-8 -*-
 import pymysql
 
-
 class Mysql:
     """
-        Mysql库用法：
+        Mysql库用法x
             1.初始化数据库类
             2.start()
             3.执行操作
