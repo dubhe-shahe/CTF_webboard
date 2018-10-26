@@ -14,3 +14,8 @@ UI/js/bootstrap.bundle.min.js.map
 UI/js/bootstrap.js
 UI/js/bootstrap.js.map
 UI/js/bootstrap.min.js.map
+*.pyc
+
+\.gitignore\.swp
+
+\.DS_Store

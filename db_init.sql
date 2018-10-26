@@ -1,132 +1,164 @@
-create database if not exists CTF_webboard;
-use CTF_webboard;
+-- phpMyAdmin SQL Dump
+-- version 4.8.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Oct 26, 2018 at 10:50 PM
+-- Server version: 5.7.21
+-- PHP Version: 7.2.7
 
-create table if not exists Users
-(
-	id int(11) primary key not null auto_increment,
-	username varchar(255) not null comment '用户名',
-	password varchar(255) not null comment '密码',
-	email varchar(255) not null comment '电子邮箱',
-	points float(11,2) not null comment '获得分数（两位小数）',
-	gender varchar(255) not null comment '性别' ,
-	create_time time not null,
-	update_time time not null
-)default charset=utf8;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
-create table if not exists Problems
-(
-	id int(11) primary key not null auto_increment,
-	name varchar(255) not null comment '题目名称',
-	flag varchar(255) not null,
-	content varchar(255) not null comment '题目描述',
-	points float(11,2) not null comment '题目分数（两位小数)',
-	create_time time not null,
-	update_time time not null
-)default charset=utf8;
+--
+-- Database: `CTF`
+--
 
-create table if not exists WriteUp
-(
-	id int(11) primary key not null auto_increment,
-	uid int(11) not null comment '所属用户',
-	pid int(11) not null comment '所属题目',
-	content varchar(255) not null,
-	create_time time not null,
-	update_time time not null
-)default charset=utf8;
+-- --------------------------------------------------------
 
-create table if not exists Record
-(
-	id int(11) primary key not null auto_increment,
-	uid int(11) not null comment '提交用户',
-	pid int(11) not null comment '提交问题',
-	state int not null comment '提交结果',
-	create_time time not null,
-	update_time time not null
-)default charset=utf8;
+--
+-- Table structure for table `Problems`
+--
 
+CREATE TABLE `Problems` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL COMMENT '题目名称',
+  `flag` varchar(255) NOT NULL,
+  `content` varchar(255) NOT NULL COMMENT '题目描述',
+  `points` float(11,2) NOT NULL COMMENT '题目分数（两位小数)',
+  `create_time` datetime NOT NULL,
+  `update_time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `Problems`
+--
 
+INSERT INTO `Problems` (`id`, `name`, `flag`, `content`, `points`, `create_time`, `update_time`) VALUES
+(1, 'Web Puzzle 01', 'flag{dubhe_best}', 'dubhe@dubehe.com', 10.00, '2018-10-26 21:58:38', '2018-10-26 21:58:38');
 
-/*
-	下面是原始数据的添加，在MySQL5.1版本下执行成功。
+-- --------------------------------------------------------
 
-	NOW()函数以`'YYYY-MM-DD HH:MM:SS'返回当前的日期时间，可以直接存到DATETIME字段中。
-	CURDATE()以’YYYY-MM-DD’的格式返回今天的日期，可以直接存到DATE字段中。
-	CURTIME()以’HH:MM:SS’的格式返回当前的时间，可以直接存到TIME字段中。
+--
+-- Table structure for table `Record`
+--
 
-	这里采用的是curtime记录时间。
-*/
+CREATE TABLE `Record` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL COMMENT '提交用户',
+  `pid` int(11) NOT NULL COMMENT '提交问题',
+  `state` int(11) NOT NULL COMMENT '提交结果',
+  `create_time` datetime NOT NULL,
+  `update_time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert into Users 
-(
-	username,
-	password,
-	email,
-	points,
-	gender,
-	create_time,
-	update_time
-)
-values
-(
-	"duhbe",
-	"85b2f42582a1606d79a8741d3f26e595",
-	"dubhe@dubehe.com",
-	10,
-	"M",
-	curtime(),
-	curtime()
-);
+--
+-- Dumping data for table `Record`
+--
 
-insert into Problems 
-(
-	name,
-	flag,
-	content,
-	points,
-	create_time,
-	update_time
-)
-values
-(
-	"Web Puzzle 01",
-	"flag{dubhe_best}",
-	"dubhe@dubehe.com",
-	10,
-	curtime(),
-	curtime()
-);
+INSERT INTO `Record` (`id`, `uid`, `pid`, `state`, `create_time`, `update_time`) VALUES
+(1, 0, 0, 0, '2018-10-26 21:58:38', '2018-10-26 21:58:38');
 
-insert into WriteUp
-(
-	uid,
-	pid,
-	content,
-	create_time,
-	update_time
-)
-values
-(
-	0,
-	0,
-	"this is a WriteUp",
-	curtime(),
-	curtime()
-);
+-- --------------------------------------------------------
 
-insert into Record
-(
-	uid,
-	pid,
-	state,
-	create_time,
-	update_time
-)
-values
-(
-	0,
-	0,
-	0,
-	curtime(),
-	curtime()
-);
+--
+-- Table structure for table `Users`
+--
+
+CREATE TABLE `Users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL COMMENT '用户名',
+  `password` varchar(255) NOT NULL COMMENT '密码',
+  `email` varchar(255) NOT NULL COMMENT '电子邮箱',
+  `points` float(11,2) NOT NULL COMMENT '获得分数（两位小数）',
+  `gender` varchar(255) NOT NULL COMMENT '性别',
+  `create_time` datetime NOT NULL,
+  `update_time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Users`
+--
+
+INSERT INTO `Users` (`id`, `username`, `password`, `email`, `points`, `gender`, `create_time`, `update_time`) VALUES
+(1, 'duhbe', '85b2f42582a1606d79a8741d3f26e595', 'dubhe@dubehe.com', 10.00, 'M', '2018-10-26 21:58:38', '2018-10-26 21:58:38'),
+(2, 'a', 'a', 'a', 123.00, 'a', '2018-10-26 00:00:00', '2018-10-26 00:00:00'),
+(3, 'a ', 'b ', 'c ', 0.00, 'd ', '2018-10-26 22:49:12', '2018-10-26 22:49:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `WriteUp`
+--
+
+CREATE TABLE `WriteUp` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL COMMENT '所属用户',
+  `pid` int(11) NOT NULL COMMENT '所属题目',
+  `content` varchar(255) NOT NULL,
+  `create_time` datetime NOT NULL,
+  `update_time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `WriteUp`
+--
+
+INSERT INTO `WriteUp` (`id`, `uid`, `pid`, `content`, `create_time`, `update_time`) VALUES
+(1, 0, 0, 'this is a WriteUp', '2018-10-26 21:58:38', '2018-10-26 21:58:38');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Problems`
+--
+ALTER TABLE `Problems`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Record`
+--
+ALTER TABLE `Record`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Users`
+--
+ALTER TABLE `Users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `WriteUp`
+--
+ALTER TABLE `WriteUp`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Problems`
+--
+ALTER TABLE `Problems`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `Record`
+--
+ALTER TABLE `Record`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `Users`
+--
+ALTER TABLE `Users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `WriteUp`
+--
+ALTER TABLE `WriteUp`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
