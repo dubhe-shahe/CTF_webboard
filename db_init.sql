@@ -23,6 +23,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `Problems` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL COMMENT '题目名称',
+  `tag` varchar(255) NOT NULL COMMENT '题目分类',
   `flag` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL COMMENT '题目描述',
   `points` float(11,2) NOT NULL COMMENT '题目分数（两位小数)',
@@ -35,7 +36,7 @@ CREATE TABLE `Problems` (
 --
 
 INSERT INTO `Problems` (`id`, `name`, `flag`, `content`, `points`, `create_time`, `update_time`) VALUES
-(1, 'Web Puzzle 01', 'flag{dubhe_best}', 'dubhe@dubehe.com', 10.00, '2018-10-26 21:58:38', '2018-10-26 21:58:38');
+(1, 'Web Puzzle 01','web', 'flag{dubhe_best}', 'dubhe@dubehe.com', 10.00, '2018-10-26 21:58:38', '2018-10-26 21:58:38');
 
 -- --------------------------------------------------------
 
