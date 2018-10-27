@@ -6,10 +6,7 @@ class Mysql:
     """
         Mysql库用法x
             1.初始化数据库类
-            2.start()
-            3.执行操作
-            4.stop()
-        一定要stop!!
+            2.执行操作
     """
     def __init__(self, user, password, host, port, db):
         self.__user = user
@@ -97,6 +94,5 @@ class Mysql:
             key = ['*']
         value = ','.join(key)
         query = 'select ' + value + ' from `' + table + '` where ' + where + ' ' + suffix
-        return self.query(query)
         return self.query(query)
 
