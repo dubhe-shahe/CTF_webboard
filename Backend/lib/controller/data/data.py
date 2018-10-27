@@ -29,6 +29,18 @@ class User:
         }
         return self.db.insert('Users', data)
 
+    def changesettings(self, uid, username, password, email, gender):
+        # gender M男F女
+        dt=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        data = {
+            'username': '\'' + username + ' \'',
+            'password': '\'' + password + ' \'',
+            'email': '\'' + email + ' \'',
+            'gender': '\'' + gender + ' \'',
+            'points': 0,
+            'create_time': '\''+dt+'\'',
+            'update_time': '\''+dt+'\''
 
-A = User()
-A.adduser('a','b','c','d')
+        }
+        return self.db.update('Users', data, 'user = {0}'.format(uid))
+    
