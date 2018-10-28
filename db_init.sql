@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 26, 2018 at 10:50 PM
+-- Generation Time: Oct 28, 2018 at 07:19 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.7
 
@@ -25,7 +25,7 @@ CREATE TABLE `Problems` (
   `name` varchar(255) NOT NULL COMMENT '题目名称',
   `tag` varchar(255) NOT NULL COMMENT '题目分类',
   `flag` varchar(255) NOT NULL,
-  `content` varchar(255) NOT NULL COMMENT '题目描述',
+  `content` text NOT NULL COMMENT '题目描述',
   `points` float(11,2) NOT NULL COMMENT '题目分数（两位小数)',
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL
@@ -35,8 +35,8 @@ CREATE TABLE `Problems` (
 -- Dumping data for table `Problems`
 --
 
-INSERT INTO `Problems` (`id`, `name`, `flag`, `content`, `points`, `create_time`, `update_time`) VALUES
-(1, 'Web Puzzle 01','web', 'flag{dubhe_best}', 'dubhe@dubehe.com', 10.00, '2018-10-26 21:58:38', '2018-10-26 21:58:38');
+INSERT INTO `Problems` (`id`, `name`, `tag`, `flag`, `content`, `points`, `create_time`, `update_time`) VALUES
+(1, 'Web Puzzle 01', 'web', 'flag{dubhe_best}', 'dubhe@dubehe.com', 10.00, '2018-10-26 21:58:38', '2018-10-26 21:58:38');
 
 -- --------------------------------------------------------
 
@@ -83,8 +83,7 @@ CREATE TABLE `Users` (
 
 INSERT INTO `Users` (`id`, `username`, `password`, `email`, `points`, `gender`, `create_time`, `update_time`) VALUES
 (1, 'duhbe', '85b2f42582a1606d79a8741d3f26e595', 'dubhe@dubehe.com', 10.00, 'M', '2018-10-26 21:58:38', '2018-10-26 21:58:38'),
-(2, 'a', 'a', 'a', 123.00, 'a', '2018-10-26 00:00:00', '2018-10-26 00:00:00'),
-(3, 'a ', 'b ', 'c ', 0.00, 'd ', '2018-10-26 22:49:12', '2018-10-26 22:49:12');
+(2, 'a', 'a', 'a', 123.00, 'a', '2018-10-26 00:00:00', '2018-10-26 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -96,7 +95,7 @@ CREATE TABLE `WriteUp` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL COMMENT '所属用户',
   `pid` int(11) NOT NULL COMMENT '所属题目',
-  `content` varchar(255) NOT NULL,
+  `content` text NOT NULL,
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -128,7 +127,9 @@ ALTER TABLE `Record`
 -- Indexes for table `Users`
 --
 ALTER TABLE `Users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `WriteUp`
