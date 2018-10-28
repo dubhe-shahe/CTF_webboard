@@ -5,6 +5,7 @@ UI/css/bootstrap-reboot.css
 UI/js/bootstrap.bundle.js
 UI/js/bootstrap.js
 UI/js/jquery.js
+UI/js/Chart.js
 *.pyc
 
 \.gitignore\.swp

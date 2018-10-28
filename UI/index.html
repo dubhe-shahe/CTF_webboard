@@ -4,10 +4,9 @@
 <meta charset="utf-8">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.min.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<title></title>
-</head>
+<script type="text/javascript" src="js/Chart.min.js"></script>
 <title>天枢信息安全协会 CTF训练平台</title>
+</head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary"><!--导航栏-->
 		<a class="navbar-brand" href="#">天枢信息安全协会 CTF训练平台</a>
@@ -17,34 +16,19 @@
 					<a class="nav-link" href="#">主页</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">网络攻防</a>
+					<a class="nav-link" href="problems.html">题目</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">逆向工程</a>
+					<a class="nav-link" href="rank.html">排行榜</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">二进制漏洞</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">密码攻击</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">移动安全</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">安全杂项</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">排行榜</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">提交记录</a>
+					<a class="nav-link" href="record.html">提交记录</a>
 				</li>
 			</ul>
 		</div>
 		<ul class="nav navbar-nav ml-auto">
 			<li class="nav-item">
-				<a href="#">你还没有登录</a>
+				<a href="login.html">你还没有登录</a>
 			</li>
 		</ul>
 	</nav>
@@ -76,12 +60,82 @@
 					<h2>欢迎！XXX</h2>
 					<p>当前积分：0</p>
 					<p>当前排名：0</p>
+					<p>正确率：0%</p>
+					<div style="width: 40%">
+						<canvas id="skills"></canvas>
+						<script type="text/javascript">
+							var canv = $("#skills").get(0).getContext("2d");
+							var crt = new Chart(canv, {
+								type:"radar",
+								data:{
+									labels:["Web", "MISC", "Crypto", "Reverse", "PWN", "Mobile"],
+									datasets:[{
+										label: "技能",
+										data: [1, 2, 3, 3, 2, 1]
+									}]
+								},
+								options:{
+									scale:{
+										ticks:{
+											beginAtZero: true,
+											display: false,
+											maxTicksLimit: undefined
+										}
+									}
+								}
+							});
+						</script>
+					</div>
+					
 					<br/>
 					<a href="#">进入用户中心</a>
 				</div>
 			</div>
-			<nav class="col-md-1 navbar-dark">
-				<ul class="nav mr-auto nav-tabs nav-stacked"><!--侧栏-->
+			<nav class="col-md-1 navbar-dark navbar-expand-lg">
+				<ul class="nav nav-tabs nav-stacked">
+					<li>
+						<h4>最新题目</h4>
+					</li>
+					<li>
+						<a class="nav-link" href="detail.html">题目1</a>
+					</li>
+					<li>
+						<a class="nav-link" href="detail.html">题目2</a>
+					</li>
+					<li>
+						<a class="nav-link" href="detail.html">题目3</a>
+					</li>
+					<li>
+						<a class="nav-link" href="detail.html">题目4</a>
+					</li>
+					<li>
+						<a class="nav-link" href="detail.html">题目5</a>
+					</li>
+				</ul>
+				<ul class="nav nav-tabs nav-stacked">
+					<li>
+						<h4>排行榜Top5</h4>
+					</li>
+					<li>
+						<p class="nav-link">用户1</p>
+					</li>
+					<li>
+						<p class="nav-link">用户2</p>
+					</li>
+					<li>
+						<p class="nav-link">用户3</p>
+					</li>
+					<li>
+						<p class="nav-link">用户4</p>
+					</li>
+					<li>
+						<p class="nav-link">用户5</p>
+					</li>
+				</ul>
+				<ul class="nav nav-tabs nav-stacked"><!--侧栏-->
+					<li>
+						<h4>其他链接</h4>
+					</li>
 					<li>
 						<a class="nav-link" href="#">Github</a>
 					</li>
