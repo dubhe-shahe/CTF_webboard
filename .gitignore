@@ -11,3 +11,5 @@ UI/js/Chart.js
 \.gitignore\.swp
 
 \.DS_Store
+
+Backend/venv/

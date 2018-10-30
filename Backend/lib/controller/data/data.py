@@ -14,12 +14,19 @@ class User:
         self.db = Mysql(user, password, host, port, db)
         # 加载数据库
 
-    def checkuser(self,username):
+    def checkuser(self, username):
+        # check whether user exist return length of the output
         return len(self.db.select('Users', '', 'username=\''+username+'\''))
+
+    def getinfo(self, uid):
+        return self.db.select('Users', '', 'id=' + str(uid) + '')
+
+    def getuserlist(self):
+        return self.db.select('Users')
 
     def adduser(self, username, password, email, gender):
         # gender M男F女
-        if self.checkuser(username)>0:
+        if self.checkuser(username) == 0:
             dt = Time.gettime()
             data = {
                 'username': '\'' + username + ' \'',
@@ -35,6 +42,7 @@ class User:
         return False
 
     def changepass(self, uid, password):
+        # change password
         dt = Time.gettime()
         data = {
             'password': '\'' + password + ' \'',
@@ -43,6 +51,7 @@ class User:
         return self.db.update('Users', data, 'user = {0}'.format(uid))
 
     def changeemail(self, uid, email):
+        # change email
         dt = Time.gettime()
         data = {
             'email': '\'' + email + ' \'',
@@ -50,14 +59,9 @@ class User:
         }
         return self.db.update('Users', data, 'user = {0}'.format(uid))
 
-    # def addpoints(self, uid, points):
-    #     dt = Time.gettime()
-    #     data = {
-    #         'points': 0,
-    #         'update_time': '\''+dt+'\''
-    #     }
-    #     return self.db.update('Users', data, 'user = {0}'.format(uid))
-    # 这里可能是个坑
+    def addpoints(self, uid, points):
+        # add point to a user
+        return self.db.add('Users', 'points', points, 'uid = '+str(uid))
 
     def changesettings(self, uid, username, password, email, gender):
         # gender M男F女

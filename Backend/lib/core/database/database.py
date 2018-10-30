@@ -26,7 +26,7 @@ class Mysql:
                 db=self.__db,
                 charset='utf8mb4',  # 数据库编码类型
             )
-            self.__cursor = self.__conn.cursor()
+            self.__cursor = self.__conn.cursor(pymysql.cursors.DictCursor)
             return True  # 调用时判断是否执行成功
         except Exception as e:
             print(e)
@@ -88,11 +88,15 @@ class Mysql:
         query = 'update `' + table + '` set ' + ','.join(sets) + ' where ' + where
         return self.execute(query)
 
-    def select(self, table, key, where, suffix=''):
+    def select(self, table, key='', where='1=1', suffix=''):
         # select行 suffix是指如果要查询order by ,union之类的东西写的
         if len(key) == 0:
             key = ['*']
         value = ','.join(key)
         query = 'select ' + value + ' from `' + table + '` where ' + where + ' ' + suffix
         return self.query(query)
+
+    def add(self, table, key, num, where='1=2'):
+        query = 'update`' + table + '` set ' + key + ' = ' + key + '+' + str(num) + ' where' + where
+        return self.execute(query)
 
