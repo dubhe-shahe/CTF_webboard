@@ -58,6 +58,7 @@ class Mysql:
             self.__conn.commit()
             self.stop()
         except Exception as e:
+            _bool = False
             print(e)
             self.__conn.rollback()
             return False

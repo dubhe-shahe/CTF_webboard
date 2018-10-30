@@ -2,13 +2,16 @@
 import hashlib
 from config.security import *
 
-def cleandata(dicts):
+def cleandata(l):
     r = {}
-    for role in dicts:
+    i = 1;
+    for role in l:
         k = {}
         for key in role:
-            k.update({key: str(dicts[key])})
-        r.update(k)
+            k.update({key: str(role[key])})
+        r.update({str(i): k})
+        i += 1
+    print(r)
     return r
 
 
@@ -17,7 +20,7 @@ def filter(text):
 
 
 def encode(text):
-    return hashlib.sha1(SecurityConfig.salt+text+SecurityConfig.salt).hexdigest()
+    return hashlib.sha1(text+SecurityConfig.salt).hexdigest()
 
 
 if __name__ == "__main__":

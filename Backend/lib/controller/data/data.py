@@ -22,6 +22,7 @@ class User:
         return self.db.select('Users', '', 'id=' + str(uid) + '')
 
     def getuserlist(self):
+        print(self.db.select('Users'))
         return self.db.select('Users')
 
     def adduser(self, username, password, email, gender):
@@ -48,7 +49,7 @@ class User:
             'password': '\'' + password + ' \'',
             'update_time': '\''+dt+'\''
         }
-        return self.db.update('Users', data, 'user = {0}'.format(uid))
+        return self.db.update('Users', data, 'id = {0}'.format(uid))
 
     def changeemail(self, uid, email):
         # change email
@@ -57,11 +58,11 @@ class User:
             'email': '\'' + email + ' \'',
             'update_time': '\''+dt+'\''
         }
-        return self.db.update('Users', data, 'user = {0}'.format(uid))
+        return self.db.update('Users', data, 'id = {0}'.format(uid))
 
     def addpoints(self, uid, points):
         # add point to a user
-        return self.db.add('Users', 'points', points, 'uid = '+str(uid))
+        return self.db.add('Users', 'points', points, 'id = '+str(uid))
 
     def changesettings(self, uid, username, password, email, gender):
         # gender M男F女
@@ -76,4 +77,4 @@ class User:
             'update_time': '\''+dt+'\''
 
         }
-        return self.db.update('Users', data, 'user = {0}'.format(uid))
+        return self.db.update('Users', data, 'id = {0}'.format(uid))
