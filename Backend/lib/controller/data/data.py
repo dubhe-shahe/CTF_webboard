@@ -78,3 +78,92 @@ class User:
 
         }
         return self.db.update('Users', data, 'id = {0}'.format(uid))
+
+
+class Problem:
+    def __init__(self):
+        pass
+
+    #检测题目是否存在
+    def checkexit(self):
+        pass
+
+    #获取所有tag类的题目列表
+    def getproblemlist(self):
+        pass
+
+    #获取所有tag类的题目列表
+    def getproblemlist(self):
+        pass
+
+    #获取题目信息
+    def getinfo(self):
+        pass
+
+    #添加题目
+    def addproblem(self):
+        pass
+
+    #修改题目
+    def editproblem(self):
+        pass
+
+    #删除题目
+    def delproblem(self):
+        pass
+
+    #修改题目信息（管理员）
+    def changesettings(self):
+        pass
+
+class WriteUp:
+    def __init__(self):
+        pass
+
+    #检测WriteUp是否存在
+    def checkexit(self):
+        pass
+
+    #获取writeup列表
+    def getwriteuplist(self):
+        pass
+
+    #获取writeup信息
+    def getinfo(self):
+        pass
+
+    #添加writeup
+    def addwriteup(self):
+        pass
+
+    #删除writeup
+    def delwriteup(self):
+        pass
+
+    #编辑writeup
+    def editwriteup(self):
+        pass
+
+    #修改writeup信息(管理员)
+    def changesettings(self):
+        pass
+
+class Record:
+    def __init__(self):
+        pass
+
+    #获取Record列表
+    def getrecordlist(self):
+        pass
+
+    #获取Record信息
+    def getrecord(self):
+        pass
+
+    #添加Record
+    def addrecord(self):
+        pass
+
+    #删除Record
+    def delrecord(self):
+        pass
