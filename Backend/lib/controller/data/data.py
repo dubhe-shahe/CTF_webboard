@@ -84,31 +84,65 @@ class Problem:
     def __init__(self):
         pass
 
-    #检测题目是否存在
-    def checkexit(self):
-        pass
-
     #获取所有tag类的题目列表
     def getproblemlist(self):
-        pass
+        data = self.db.select('Problems')
+        if(data == NULL):
+            return False
+        else:
+            return data
 
     #获取所有tag类的题目列表
-    def getproblemlist(self):
-        pass
+    def gettaglist(self,tag):
+        data = self.db.select('Problems', '' , 'tag=\''+username+'\'')
+        if(data == NULL):
+            return False
+        else:
+            return data
 
     #获取题目信息
-    def getinfo(self):
-        pass
+    def getinfo(self,pid):
+        return self.db.select('Problems', '' , 'id=' + str(pid) + '')
 
-    #添加题目
-    def addproblem(self):
-        pass
+    #添加题目(管理员)
+    def addproblem(self,name,tag,content,flag,points):
+        dt = Time.gettime()
+        data = {
+            'name': '\'' + name + ' \'',
+            'tag': '\'' + tag +'\'',
+            'content': '\'' + content +'\'',
+            'flag': '\'' + flag +'\'',
+            'points': '\'' + points +'\'',
+            'create_time': '\''+dt+'\'',
+            'update_time': '\''+dt+'\''
+        }
+        try:
+            result = self.db.insert('Users', data)
+        except:
+            return False
+        return result
+        
+    #修改题目(管理员)
+    def editproblem(self,pid,name="",tag="",content="",flag="",points=""):
+        data = {}
+        dt = Time.gettime()
+        data['update_time'] = '\''+dt+'\''
+        if (name != ""):
+            data['name'] = '\''+name+'\''
+        if(tag != ""):
+            data['tag'] = '\''+tag+'\''
+        if(content != ""):
+            data['content'] = '\''+content+'\''
+        if (flag != ""):
+            data['flag'] = '\''+flag+'\''
+        if (points != ""):
+            data['points'] = '\''+points+'\''
 
-    #修改题目
-    def editproblem(self):
-        pass
+        return self.db.update('Problems', data , 'id = {0}'.format(pid))
+        
 
-    #删除题目
+
+    #删除题目(管理员)
     def delproblem(self):
         pass
 
