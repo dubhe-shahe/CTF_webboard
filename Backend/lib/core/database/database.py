@@ -33,8 +33,11 @@ class Mysql:
             return False
 
     def stop(self):
-        self.__cursor.close()
-        self.__conn.close()
+        try:
+            self.__cursor.close()
+            self.__conn.close()
+        except Exception as e:
+            print(e)
 
     def query(self, query):  # 执行query语句，返回所有结果
             try:
