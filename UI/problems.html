@@ -6,9 +6,151 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/Chart.min.js"></script>
 <title>天枢信息安全协会 题目列表</title>
-	
 </head>
-
 <body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary"><!--导航栏-->
+		<a class="navbar-brand" href="#">天枢信息安全协会 CTF训练平台</a>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="index.html">主页</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#">题目</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="rank.html">排行榜</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="record.html">提交记录</a>
+				</li>
+			</ul>
+		</div>
+		<ul class="nav navbar-nav ml-auto">
+			<li class="nav-item">
+				<a href="login.html">你还没有登录</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="container-fluid">
+		<br/>
+		<div class="row">
+			<div class="col-md-10">
+				<h2>题目列表</h2>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">题目编号</th>
+							<th scope="col">题目名称</th>
+							<th scope="col">题目标签</th>
+							<th scope="col">通过状态</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="table-dark">
+							<td>#0</td>
+							<td><a href="#">这是一个测试用的题目</a></td>
+							<td>
+								<span class="badge badge-success">Easy</span>
+								<span class="badge badge-info">MISC</span>
+							</td>
+							<td>
+								<p class="text-info">未提交</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div>
+					<ul class="pagination">
+						<li class="page-item disabled">
+							<a href="#" class="page-link">&laquo;</a>
+						</li>
+						<li class="page-item active">
+							<a href="#" class="page-link">1</a>
+						</li>
+						<li class="page-item disabled">
+							<a href="#" class="page-link">&raquo;</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="alert alert-primary">
+					<h4>查找题目</h4>
+					<form action="#" class="form-group">
+						<input type="text" placeholder="输入题目编号或题目名称">
+					</form>
+					<hr/>
+					<h4>题目分类</h4>
+					<form action="#" class="form-group">
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="checkbox" checked="" value="web">
+								Web
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="checkbox" checked="" value="misc">
+								MISC
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="checkbox" checked="" value="crypto">
+								Crypto
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="checkbox" checked="" value="reverse">
+								Reverse
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="checkbox" checked="" value="pwn">
+								PWN
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="checkbox" checked="" value="mobile">
+								Mobile
+							</label>
+						</div>
+					</form>
+					<hr/>
+					<h4>题目难度</h4>
+					<form class="form-group">
+						<div class="form-check">
+							<label>
+								<input type="radio" class="form-check-input" name="optionsRadios" id="all" value="all" checked="">
+								<i>所有难度</i>
+							</label>
+						</div>
+						<div class="form-check">
+							<label>
+								<input type="radio" class="form-check-input" name="optionsRadios" id="easy" value="easy">
+								<i>简单</i>
+							</label>
+						</div>
+						<div class="form-check">
+							<label>
+								<input type="radio" class="form-check-input" name="optionsRadios" id="mid" value="mid">
+								<i>中等</i>
+							</label>
+						</div>
+						<div class="form-check">
+							<label>
+								<input type="radio" class="form-check-input" name="optionsRadios" id="hard" value="hard">
+								<i>困难</i>
+							</label>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
