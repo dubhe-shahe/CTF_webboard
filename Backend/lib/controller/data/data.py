@@ -82,10 +82,13 @@ class User:
 
 class Problem:
 
-    db = Mysql(user, password, host, port, db)
-
     def __init__(self):
-        pass
+        user = DBConfig.user
+        password = DBConfig.password
+        host = DBConfig.host
+        port = DBConfig.port
+        db = DBConfig.db
+        self.db = Mysql(user, password, host, port, db)
 
     # 获取所有tag类的题目列表
     def getproblemlist(self):
