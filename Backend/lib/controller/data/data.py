@@ -81,72 +81,76 @@ class User:
 
 
 class Problem:
+
+    db = Mysql(user, password, host, port, db)
+
     def __init__(self):
         pass
 
-    #获取所有tag类的题目列表
+    # 获取所有tag类的题目列表
     def getproblemlist(self):
         data = self.db.select('Problems')
-        if(data == NULL):
+        if len(data) == 0:
             return False
         else:
             return data
 
-    #获取所有tag类的题目列表
-    def gettaglist(self,tag):
-        data = self.db.select('Problems', '' , 'tag=\''+username+'\'')
-        if(data == NULL):
+    # 获取所有tag类的题目列表
+    def gettaglist(self, tag):
+        data = self.db.select('Problems', '', 'tag=\''+tag+'\'')
+        if len(data) == 0:
             return False
         else:
             return data
 
-    #获取题目信息
-    def getinfo(self,pid):
-        return self.db.select('Problems', '' , 'id=' + str(pid) + '')
+    # 获取题目信息
+    def getinfo(self, pid):
+        return self.db.select('Problems', '', 'id=' + str(pid) + '')
 
-    #添加题目(管理员)
-    def addproblem(self,name,tag,content,flag,points):
+    # 添加题目(管理员)
+    def addproblem(self, name, tag, content, flag, points):
         dt = Time.gettime()
         data = {
             'name': '\'' + name + ' \'',
-            'tag': '\'' + tag +'\'',
-            'content': '\'' + content +'\'',
-            'flag': '\'' + flag +'\'',
-            'points': '\'' + points +'\'',
-            'create_time': '\''+dt+'\'',
-            'update_time': '\''+dt+'\''
+            'tag': '\'' + tag + '\'',
+            'content': '\'' + content + '\'',
+            'flag': '\'' + flag + '\'',
+            'points': '\'' + points + '\'',
+            'create_time': '\'' + dt + '\'',
+            'update_time': '\'' + dt + '\''
         }
         try:
             result = self.db.insert('Users', data)
-        except:
+        except Exception as e:
+            print(e)
             return False
         return result
         
-    #修改题目(管理员)
-    def editproblem(self,pid,name="",tag="",content="",flag="",points=""):
+    # 修改题目(管理员)
+    def editproblem(self, pid,name="", tag="", content="", flag="", points=""):
         data = {}
         dt = Time.gettime()
         data['update_time'] = '\''+dt+'\''
-        if (name != ""):
+        if name != "":
             data['name'] = '\''+name+'\''
-        if(tag != ""):
+        if tag != "":
             data['tag'] = '\''+tag+'\''
-        if(content != ""):
+        if content != "":
             data['content'] = '\''+content+'\''
-        if (flag != ""):
+        if flag != "":
             data['flag'] = '\''+flag+'\''
-        if (points != ""):
+        if points != "":
             data['points'] = '\''+points+'\''
 
-        return self.db.update('Problems', data , 'id = {0}'.format(pid))
+        return self.db.update('Problems', data, 'id = {0}'.format(pid))
         
 
 
-    #删除题目(管理员)
+    # 删除题目(管理员)
     def delproblem(self):
         pass
 
-    #修改题目信息（管理员）
+    # 修改题目信息（管理员）
     def changesettings(self):
         pass
 
@@ -154,31 +158,31 @@ class WriteUp:
     def __init__(self):
         pass
 
-    #检测WriteUp是否存在
+    # 检测WriteUp是否存在
     def checkexit(self):
         pass
 
-    #获取writeup列表
+    # 获取writeup列表
     def getwriteuplist(self):
         pass
 
-    #获取writeup信息
+    # 获取writeup信息
     def getinfo(self):
         pass
 
-    #添加writeup
+    # 添加writeup
     def addwriteup(self):
         pass
 
-    #删除writeup
+    # 删除writeup
     def delwriteup(self):
         pass
 
-    #编辑writeup
+    # 编辑writeup
     def editwriteup(self):
         pass
 
-    #修改writeup信息(管理员)
+    # 修改writeup信息(管理员)
     def changesettings(self):
         pass
 
@@ -186,18 +190,18 @@ class Record:
     def __init__(self):
         pass
 
-    #获取Record列表
+    # 获取Record列表
     def getrecordlist(self):
         pass
 
-    #获取Record信息
+    # 获取Record信息
     def getrecord(self):
         pass
 
-    #添加Record
+    # 添加Record
     def addrecord(self):
         pass
 
-    #删除Record
+    # 删除Record
     def delrecord(self):
         pass

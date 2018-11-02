@@ -18,7 +18,7 @@ def cleandata(l):
 
 def filter(text):
     newtext = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+","",text)
-    return text
+    return newtext
 
 
 def encode(text):
