@@ -7,7 +7,80 @@
 <script type="text/javascript" src="js/Chart.min.js"></script>
 <title>天枢信息安全协会 用户中心</title>
 </head>
-
 <body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary"><!--导航栏-->
+		<a class="navbar-brand" href="#">天枢信息安全协会 CTF训练平台</a>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="#">主页</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="problems.html">题目</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="rank.html">排行榜</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="record.html">提交记录</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<br/>
+	<div class="container-fluid">
+		<div class="alert alert-light">
+			<h2>欢迎！XXX</h2>
+			<p>当前积分：0</p>
+			<p>当前排名：0</p>
+			<p>正确率：0%</p>
+			<div style="width: 40%">
+			<canvas id="skills"></canvas>
+			<script type="text/javascript">
+				var canv = $("#skills").get(0).getContext("2d");
+				var crt = new Chart(canv, {
+					type:"radar",
+					data:{
+						labels:["Web", "MISC", "Crypto", "Reverse", "PWN", "Mobile"],
+						datasets:[{
+							label: "技能",
+							data: [1, 2, 3, 3, 2, 1]
+						}]
+					},
+					options:{
+						scale:{
+							ticks:{
+								beginAtZero: true,
+								display: false,
+								maxTicksLimit: undefined
+							}
+						}
+					}
+				});
+			</script>
+		</div>			
+		<br/>
+			<h2>账户信息</h2>
+			<form action="#">
+				<label for="email">邮箱：</label>
+				<input type="text" value="" readonly>
+				<br/>
+				<label for="username">用户名：</label>
+				<input type="text" value="" required>
+				<br/>
+				<label>修改密码：</label><br/>
+				<label for="password">原密码：</label>
+				<input type="password" value="">
+				<br/>
+				<label for="newpassword">新密码：</label>
+				<input type="password" value="">
+				<br/>
+				<label for="sure">确认密码：</label>
+				<input type="password" value="">
+				<br/>
+				<button type="submit" class="btn btn-secondary">提交</button>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
