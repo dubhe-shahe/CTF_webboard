@@ -18,6 +18,7 @@ def cleandata(l):
 
 def filter(text):
     newtext = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+","",text)
+    # 我觉得你这个地方可能会有些问题，应该是替换成转义字符，不是全去掉 Luty 你注意一下。
     return newtext
 
 

@@ -64,19 +64,22 @@ class User:
         # add point to a user
         return self.db.add('Users', 'points', points, 'id = '+str(uid))
 
-    def changesettings(self, uid, username, password, email, gender):
+    def changesettings(self, uid, username="", password="", email="", gender=""):
         # gender M男F女
+
         dt = Time.gettime()
         data = {
-            'username': '\'' + username + ' \'',
-            'password': '\'' + password + ' \'',
-            'email': '\'' + email + ' \'',
-            'gender': '\'' + gender + ' \'',
-            'points': 0,
-            'create_time': '\''+dt+'\'',
-            'update_time': '\''+dt+'\''
-
+            'update_time': '\'' + dt + '\'',
         }
+        if username != "":
+            data["username"] = '\'' + username + ' \''
+        if password != "":
+            data["password"] = '\'' + password + ' \''
+        if email != "":
+            data["email"] = '\'' + email + ' \''
+        if gender != "":
+            data["gender"] = '\'' + gender + ' \''
+
         return self.db.update('Users', data, 'id = {0}'.format(uid))
 
 
@@ -146,8 +149,6 @@ class Problem:
             data['points'] = '\''+points+'\''
 
         return self.db.update('Problems', data, 'id = {0}'.format(pid))
-        
-
 
     # 删除题目(管理员)
     def delproblem(self):
