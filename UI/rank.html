@@ -4,10 +4,89 @@
 <meta charset="utf-8">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/Chart.min.js"></script>
 <title>天枢信息安全协会 排行榜</title>
 </head>
-
 <body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary"><!--导航栏-->
+		<a class="navbar-brand" href="#">天枢信息安全协会 CTF训练平台</a>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="index.html">主页</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">题目</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="rank.html">排行榜</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="record.html">提交记录</a>
+				</li>
+			</ul>
+		</div>
+		<ul class="nav navbar-nav ml-auto">
+			<li class="nav-item">
+				<a href="login.html">你还没有登录</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="container-fluid">
+		<br/>
+		<div class="row">
+			<div class="col-md-9">
+				<h2>排行榜</h2>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">排名</th>
+							<th scope="col">用户名</th>
+							<th scope="col">得分</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="table-dark">
+							<td><p class="text-info">#1</p></td>
+							<td><a class="text-info" href="#">用户1</a></td>
+							<td><p class="text-info">666</p></td>
+						</tr>
+						<tr class="table-dark">
+							<td><p class="text-info">#2</p></td>
+							<td><a class="text-info" href="#">用户2</a></td>
+							<td><p class="text-info">450</p></td>
+						</tr>
+						<tr class="table-dark">
+							<td><p class="text-info">#3</p></td>
+							<td><a class="text-info" href="#">用户3</a></td>
+							<td><p class="text-info">233</p></td>
+						</tr>
+						<tr class="table-dark">
+							<td><p class="text-secondary">#4</p></td>
+							<td><a class="text-secondary" href="#">用户4</a></td>
+							<td><p class="text-secondary">0</p></td>
+						</tr>
+						<tr class="table-dark">
+							<td><p class="text-secondary">#5</p></td>
+							<td><a class="text-secondary" href="#">用户4</a></td>
+							<td><p class="text-secondary">-1</p></td>
+						</tr>
+					</tbody>
+				</table>
+				<div>
+					<ul class="pagination">
+						<li class="page-item disabled">
+							<a href="#" class="page-link">&laquo;</a>
+						</li>
+						<li class="page-item active">
+							<a href="#" class="page-link">1</a>
+						</li>
+						<li class="page-item disabled">
+							<a href="#" class="page-link">&raquo;</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
