@@ -97,6 +97,7 @@ CREATE TABLE `WriteUp` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL COMMENT '所属用户',
   `pid` int(11) NOT NULL COMMENT '所属题目',
+  `title` text NOT NULL COMMENT '题解标题',
   `content` text NOT NULL,
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL
@@ -106,8 +107,8 @@ CREATE TABLE `WriteUp` (
 -- Dumping data for table `WriteUp`
 --
 
-INSERT INTO `WriteUp` (`id`, `uid`, `pid`, `content`, `create_time`, `update_time`) VALUES
-(1, 0, 0, 'this is a WriteUp', '2018-10-26 21:58:38', '2018-10-26 21:58:38');
+INSERT INTO `WriteUp` (`id`, `uid`, `pid`, `title`,`content`, `create_time`, `update_time`) VALUES
+(1, 0, 0, 'this is a title','this is a WriteUp', '2018-10-26 21:58:38', '2018-10-26 21:58:38');
 
 --
 -- Indexes for dumped tables
