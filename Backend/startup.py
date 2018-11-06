@@ -14,6 +14,7 @@ api.add_resource(UserChangeEmail, '/user/change/email/<string:uid>')
 #Problems
 api.add_resource(Problems, '/problem/<string:pid>')
 api.add_resource(ProblemGetAll, '/problem/all/')
+api.add_resource(ProblemGetTagList, '/problem/tag/<string:tag>')
 
 if __name__ == '__main__':
     app.run(debug=True)
