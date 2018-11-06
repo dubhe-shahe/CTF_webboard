@@ -13,5 +13,5 @@ UI/js/Chart.js
 \.DS_Store
 
 Backend/venv/
-Backend/config/
+Backend/config/database.py
 requirenments.txt
