@@ -37,5 +37,15 @@ class ProblemGetAll(Resource):
     def get(self):
         return cleandata(self.Problem.getproblemlist())
 
+class ProblemGetTagList(Resource):
+    Problem = Problem()
+
+    def get(self, tag):
+        ret = cleandata(self.Problem.gettaglist(filter(tag)))
+        if ret:
+            return ret
+        else: 
+            return {'ret': 404}
+
 if __name__ == "__main__":
     pass
