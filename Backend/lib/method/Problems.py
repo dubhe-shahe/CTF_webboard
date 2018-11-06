@@ -23,8 +23,8 @@ class Problems(Resource):
                 'ret': 500
             }
 
-    def get(self, uid):
-        ret = cleandata(self.Problem.getinfo(filter(uid)))
+    def get(self, pid):
+        ret = cleandata(self.Problem.getinfo(filter(pid)))
         if ret:
             return ret
         else:
